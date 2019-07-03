@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hello, World</title>
+    <style type="text/css">
+        html{height:100%}
+        body{height:100%;margin:100px;padding:10px}
+        #container{height:100%}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=ymChmZGrR6NrkZ6KNCmwRMvlfHnFrcIc">
+
+    </script>
+</head>
+
+
+
+<body>
+<div id="container"></div>
+
+
+<script type="text/javascript">
+    var a = window.location.search.substring(4);
+    console.log(a);
+    var getlocation = "http://localhost:8080/map/index/"+a;
+    $(function(){
+        htmlobj = $.ajax({
+         url: getlocation, async: true, dataType: 'JSONP',jsonp:"callback",
+            success(r){
+             console.log(r);
+                a = r;
+             var map = new BMap.Map("container");
+               // 创建地图实例
+              var point = new BMap.Point(a.lng,a.lat);
+                map.centerAndZoom(point, 15);
+                map.addControl(new BMap.NavigationControl());
+                map.enableScrollWheelZoom(true);
+                // 初始化地图，设置中心点坐标和地图级别
+                var marker = new BMap.Marker(point);
+                map.addOverlay(marker);
+
+        },error(e){
+             console.log(e);
+            }});
+        console.log(a);
+    });
+</script>
+</body>
+</html>

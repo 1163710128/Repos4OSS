@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"%>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <title>Sign-In</title>
+</head>
+<body>
+<h1>选择你的房子</h1>
+<br>
+<form action="http://localhost:8080/house/release" method="get">
+    <br>
+    <table width="300" align="center">
+        <tr>
+            <td><input type="text"  name="location" placeholder="location"></td>
+        </tr>
+        <tr>
+            <td><input type="number" name="price" placeholder="price/k"></td>
+        </tr>
+        <tr>
+            <td><input style="height:50px"  type="text" name="description" placeholder="describe your house"></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="longitude" placeholder="enter your longitude"></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="latitude" placeholder="enter your latitude"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="submit" />
+            </td>
+        </tr>
+    </table>
+
+    <a href = "http://api.map.baidu.com/lbsapi/getpoint/index.html">拾取你的坐标</a>
+    <br>
+    <br>
+    <a href = "http://localhost:8081/resoldhouse/templates/test.html">转换你的坐标</a>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录账号</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/component.css" />
+    <!--[if IE]>
+    <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <header class="codrops-header">
+        <h1>管理系统 <span>管理系统登录</span></h1>
+        <!--<p>更多精彩内容请关注：<a href="http://www.htmleaf.com/" target="_blank">jQuery之家</a></p> -->
+    </header>
+
+    <section class="content bgcolor-3">
+        <h2>房屋审核</h2>
+        <form action="http://localhost:8080/admin/verify" method="get">
+        <span class="input input--kyo">
+                    <input class="input__field input__field--kyo" type="text" id="input-19" name = "adminId"/>
+                    <label class="input__label input__label--kyo" for="input-19">
+                        <span class="input__label-content input__label-content--kyo">What's your adminID？</span>
+                    </label>
+        </span>
+
+
+            <span class="input input--kyo">
+                    <input class="input__field input__field--kyo" type="text" id="input-20" name = "id"/>
+                    <label class="input__label input__label--kyo" for="input-20">
+                        <span class="input__label-content input__label-content--kyo">ID of house verified</span>
+                    </label>
+                </span>
+
+            <span class="input input--kyo">
+                    <input class="input__field input__field--kyo" type="submit" id="submit" placeholder="登录"/>
+                    <label class="input__label input__label--kyo" for="submit">
+                        <span class="input__label-content input__label-content--kyo"></span>
+                    </label>
+                </span>
+        </form>
+    </section>
+
+</div><!-- /container -->
+<script src="js/classie.js"></script>
+<script>
+    (function() {
+        // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        if (!String.prototype.trim) {
+            (function() {
+                // Make sure we trim BOM and NBSP
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function() {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+            // in case the input is already filled..
+            if( inputEl.value.trim() !== '' ) {
+                classie.add( inputEl.parentNode, 'input--filled' );
+            }
+
+            // events:
+            inputEl.addEventListener( 'focus', onInputFocus );
+            inputEl.addEventListener( 'blur', onInputBlur );
+        } );
+
+        function onInputFocus( ev ) {
+            classie.add( ev.target.parentNode, 'input--filled' );
+        }
+
+        function onInputBlur( ev ) {
+            if( ev.target.value.trim() === '' ) {
+                classie.remove( ev.target.parentNode, 'input--filled' );
+            }
+        }
+    })();
+</script>
+</body>
+</html>

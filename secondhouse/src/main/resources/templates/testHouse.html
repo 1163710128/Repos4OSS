@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+    </script>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        $(function () {
+            htmlobj = $.ajax({
+                url:"http://localhost:8080/house/getAllHouse",
+                dataType: 'JSONP',
+                aysnc : true,
+                jsonp:"callback",
+                success(msg){
+                    var list = msg.houseList
+                    var data = eval(list)
+                    var num = 0
+                    $.each(data,function (num) {
+                        var id = data[num].id
+                        var mylocation = data[num].location
+                        var price = data[num].price
+                        var description = data[num].description
+                        var value = "<tr>";
+                        value +="<td align='center'>"+id+"</td> <td align='center'>"+mylocation+"</td> <td align='center'>"+price+"</td> <td align='center'>"+description+"</td> <td align='center'><a href = http://localhost:8081/secondhouse/templates/index.html?id="+num+">"+"map"+"</a></td></tr>";
+
+                        $("#tb").append(value);
+                        // alert(value)
+                    })
+
+                },error(e){
+                    console.log(e);
+                }});
+        });
+    </script>
+
+    <style type="text/css">
+        table.hovertable {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+        table.hovertable th {
+            background-color:#c3dde0;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+        table.hovertable tr {
+            background-color:#d4e3e5;
+        }
+        table.hovertable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+    </style>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>SecondHouse</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+</head>
+
+<body>
+
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="http://localhost:8081/secondhouse/templates/testhouse.html" class="brand-logo">Trade</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="http://localhost:8081/secondhouse/templates/testAdd.html">Release</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Release</a></li>
+        </ul>
+        <a href="http://localhost:8081/secondhouse/templates/testAdd.html" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+        <div class="container">
+            <br><br>
+            <h1 class="header center teal-text text-lighten-2">推荐房屋</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">互动式交易平台</h5>
+            </div>
+            <div class="row center">
+                <a href="http://localhost:8081/secondhouse/templates/testRegister.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+            </div>
+            <br><br>
+
+        </div>
+    </div>
+    <div class="parallax"><img src="../static/background1.jpg" alt="Unsplashed background img 1"></div>
+</div>
+
+
+
+<table id="tb" width="80%" border="1" cellspacing="0" cellpadding="0"  align="center" class = hovertable>
+    <tr>
+        <!--<th align="center"><input name="checked" type="checkbox" />-->
+        <th align="center" onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">ID</th>
+        <th align="center" onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">Location</th>
+        <th align="center" onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">Price</th>
+        <th align="center" onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">Description</th>
+        <th align="center"onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">Price</th>
+        <!--<th align="center">Address</th>-->
+    </tr>
+</table>
+
+<div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+        <div class="container">
+            <div class="row center">
+                <h5 class="header col s12 light">标准化的审核机制，快速发布您的房源</h5>
+            </div>
+        </div>
+    </div>
+    <div class="parallax"><img src="../static/background3.jpg" alt="Unsplashed background img 3"></div>
+</div>
+
+
+
+
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We are a team of college students working on this project as our course project. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">站内站点</h5>
+                <ul>
+                    <li><a class="white-text" href="http://localhost:8081/secondhouse/templates/house.html">当前房屋信息</a></li>
+                    <li><a class="white-text" href="http://localhost:8081/secondhouse/templates/testRegister.html">注册账户</a></li>
+                    <li><a class="white-text" href="http://localhost:8081/secondhouse/templates/testLogin.html">登录账户</a></li>
+                    <li><a class="white-text" href="http://localhost:8081/secondhouse/templates/axisChange.html">坐标变换</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">友好链接</h5>
+                <ul>
+                    <li><a class="white-text" href="http://api.map.baidu.com/lbsapi/getpoint/index.html">百度地图坐标拾取</a></li>
+                    <li><a class="white-text" href="https://www.google.com/maps/">谷歌地图</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="https://www.cnblogs.com/siren27/">Guo Fubo</a>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+
+
+
+</html>

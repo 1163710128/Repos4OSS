@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+<tr>
+    <td><input type="text"  name="location" placeholder="longitude in google"></td>
+</tr>
+<tr>
+    <td><input type="number" name="price" placeholder="latitude in google"></td>
+</tr>
+    <tr>
+        <td>
+            <input type="submit" value="submit" />
+        </td>
+    </tr>
+</table>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script type = "text/javascript">
+    var axiscoord = "http://v.juhe.cn/offset/index?key=78755869e2d13b7a4e0c4c564a15e21e&lat="+39.908700982285396+"&lng="+116.3974965092+"&type=6";//google to baidu
+    var list = null;
+    var data={
+        items:[]
+    }
+    $(function () {
+        htmlobj = $.ajax({
+            url: axiscoord,
+            dataType: 'JSONP',
+            aysnc : true,
+            jsonp:"callback",
+            success(r){
+
+            },error(e){
+                console.log(e);
+            }});
+    });
+
+</script>
+
+</body>
+</html>
