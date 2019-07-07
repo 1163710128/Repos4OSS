@@ -2,6 +2,7 @@ package com.hit.secondhouse.dao;
 
 import com.hit.secondhouse.domain.User;
 import org.apache.ibatis.annotations.*;
+import java.utils.*;
 
 @Mapper
 public interface UserDao {
@@ -23,4 +24,7 @@ public interface UserDao {
 
     @Update("UPDATE user SET password = #{password} WHERE name = #{name}")
     void setPasswordByname(@Param("name") String name,@Param("password") String password);
+
+    @Select("SELECT* FROM user")
+    List<User> getalluser();
 }
